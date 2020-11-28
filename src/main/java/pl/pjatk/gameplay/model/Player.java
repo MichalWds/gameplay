@@ -14,16 +14,18 @@ public class Player {
     private int health;
     private int attack;
     private int mana;
+    private int money;
 
     public Player() {
     }
 
-    public Player(Long id, String nickname, int health, int attack, int mana) {
+    public Player(Long id, String nickname, int health, int attack, int mana, int money) {
         this.id = id;
         this.nickname = nickname;
         this.health = health;
         this.attack = attack;
         this.mana = mana;
+        this.money = money;
     }
 
     public Long getId() {
@@ -64,5 +66,13 @@ public class Player {
 
     public void setMana(int mana) {
         this.mana = mana;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 }
