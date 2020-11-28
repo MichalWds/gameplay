@@ -20,10 +20,10 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    private List<Player> players = List.of(new Player(1L, "DDD2 ", 303, 23, 140),
-            new Player(2L, "John", 23, 30, 334),
-            new Player(3L, "Joshn", 23, 30, 334),
-            new Player(3L, "Jos2hn", 233, 320, 34));
+    private List<Player> players = List.of(new Player(1L, "DDD2 ", 303, 23, 140,1000),
+            new Player(2L, "John", 23, 30, 334, 800),
+            new Player(3L, "Joshn", 23, 30, 334,700),
+            new Player(3L, "Jos2hn", 233, 320, 34,1000));
 
     public List<Player> findAll() {
         return playerRepository.findAll();
@@ -40,8 +40,17 @@ public class PlayerService {
 //    }
 
     public Optional<Player> findById(Long id) {
-        return playerRepository.findById(id);
+        if (id == 10) {
+            throw new IllegalArgumentException("abc");
+        } else {
+            return playerRepository.findById(id);
+        }
     }
+
+//
+//    public Optional<Player> findById(Long id) {
+//        return playerRepository.findById(id);
+//    }
 
     public void delete(Long id) {
         playerRepository.deleteById(id);
