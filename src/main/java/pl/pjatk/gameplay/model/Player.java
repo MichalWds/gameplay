@@ -28,6 +28,14 @@ public class Player {
         this.money = money;
     }
 
+    public Player(String nickname, int health, int attack, int mana, int money){
+        this.nickname = nickname;
+        this.health = health;
+        this.attack = attack;
+        this.mana = mana;
+        this.money = money;
+    }
+
     public Long getId() {
         return id;
     }
