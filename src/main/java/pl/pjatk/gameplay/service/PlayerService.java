@@ -29,16 +29,6 @@ public class PlayerService {
         return playerRepository.findAll();
     }
 
-//    public Optional<Player> findById(int id) {
-//        List<Player> players = new ArrayList<>();
-//        players.add(new Player(5L, "okon", 500, 500, 330));
-//        players.add(new Player(3L, "dpa", 200, 500, 330));
-//
-//        return players.stream()
-//                .filter(player -> player.getId() == id)
-//                .findFirst();
-//    }
-
     public Optional<Player> findById(Long id) {
         if (id == 10) {
             throw new IllegalArgumentException("abc");
@@ -47,12 +37,7 @@ public class PlayerService {
         }
     }
 
-//
-//    public Optional<Player> findById(Long id) {
-//        return playerRepository.findById(id);
-//    }
-
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         playerRepository.deleteById(id);
     }
 
