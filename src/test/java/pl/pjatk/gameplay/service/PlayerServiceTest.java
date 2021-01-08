@@ -99,6 +99,11 @@ public class PlayerServiceTest {
         Player player = playerService.update(player1, 1L);
 
         assertThat(player.getId()).isEqualTo(2L);
+
+
+
+
+
     }
 
 
