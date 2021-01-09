@@ -11,19 +11,21 @@ import java.util.Optional;
 public class PlayerService {
 
     private PlayerRepository playerRepository;
+    private DamageService damageService;
 
-    public PlayerService(PlayerRepository playerRepository) {
+    public PlayerService(PlayerRepository playerRepository, DamageService damageService) {
         this.playerRepository = playerRepository;
+        this.damageService = damageService;
     }
 
     public Player save(Player player) {
         return playerRepository.save(player);
     }
 
-    private List<Player> players = List.of(new Player(1L, "DDD2 ", 303, 23, 140,1000),
+    private List<Player> players = List.of(new Player(1L, "DDD2 ", 303, 23, 140, 1000),
             new Player(2L, "John", 23, 30, 334, 800),
-            new Player(3L, "Joshn", 23, 30, 334,700),
-            new Player(3L, "Jos2hn", 233, 320, 34,1000));
+            new Player(3L, "Joshn", 23, 30, 334, 700),
+            new Player(3L, "Jos2hn", 233, 320, 34, 1000));
 
     public List<Player> findAll() {
         return playerRepository.findAll();
@@ -37,6 +39,11 @@ public class PlayerService {
         }
     }
 
+    public void deleteAll() {
+        playerRepository.deleteAll();
+        ;
+    }
+
     public void deleteById(Long id) {
         playerRepository.deleteById(id);
     }
@@ -44,6 +51,14 @@ public class PlayerService {
     public Player update(Player playerWithUpdatedProperties, Long id) {
         playerWithUpdatedProperties.setId(id);
         return playerRepository.save(playerWithUpdatedProperties);
+    }
+
+    public Player attack(Long attackerId, Long defenderId) {
+        Player attacker = findById(attackerId).get();
+        Player defender = findById(defenderId).get();
+        defender = damageService.attack(attacker, defender);
+        playerRepository.save(defender);
+        return defender;
     }
 }
 
