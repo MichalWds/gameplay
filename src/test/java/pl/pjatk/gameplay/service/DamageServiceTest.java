@@ -112,7 +112,4 @@ public class DamageServiceTest {
         assertThat(player.getAttack()).isGreaterThan(300);
         assertThat(player.getMana()).isEqualTo(100);
     }
-
-
-
 }

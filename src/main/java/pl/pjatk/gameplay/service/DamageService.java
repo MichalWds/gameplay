@@ -61,4 +61,9 @@ public class DamageService {
         }
         return player;
     }
+
+    public Player attack(Player attacker, Player defender) {
+        defender.setHealth(defender.getHealth() - attacker.getAttack());
+        return defender;
+    }
 }
