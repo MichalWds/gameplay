@@ -1,14 +1,14 @@
 package pl.pjatk.gameplay.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Player {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nickname;
     private int health;
@@ -16,16 +16,20 @@ public class Player {
     private int mana;
     private int money;
 
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL) //umozliwia wykonywanie na wlasna reke cascady, czyli np przypisz message do playera (cascade, typ operacji na ktora pozwalamy w relacji
+    private List<Message> messageList = new ArrayList<>(); //inicjalizacja jest potrzebna bo moze rzucac nullPointerami
+
     public Player() {
     }
 
-    public Player(Long id, String nickname, int health, int attack, int mana, int money) {
+    public Player(Long id, String nickname, int health, int attack, int mana, int money, List<Message> messageList) {
         this.id = id;
         this.nickname = nickname;
         this.health = health;
         this.attack = attack;
         this.mana = mana;
         this.money = money;
+        this.messageList = messageList;
     }
 
     public Player(String nickname, int health, int attack, int mana, int money){
@@ -84,4 +88,11 @@ public class Player {
         this.money = money;
     }
 
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
 }

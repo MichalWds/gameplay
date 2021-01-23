@@ -1,6 +1,7 @@
 package pl.pjatk.gameplay.service;
 
 import org.springframework.stereotype.Service;
+import pl.pjatk.gameplay.model.Message;
 import pl.pjatk.gameplay.model.Player;
 import pl.pjatk.gameplay.repository.PlayerRepository;
 
@@ -19,13 +20,15 @@ public class PlayerService {
     }
 
     public Player save(Player player) {
+        player.getMessageList().add(new Message("some content1",player));
+        player.getMessageList().add(new Message("some content2",player));
         return playerRepository.save(player);
     }
 
-    private List<Player> players = List.of(new Player(1L, "DDD2 ", 303, 23, 140, 1000),
-            new Player(2L, "John", 23, 30, 334, 800),
-            new Player(3L, "Joshn", 23, 30, 334, 700),
-            new Player(3L, "Jos2hn", 233, 320, 34, 1000));
+    private List<Player> players = List.of(new Player(1L, "DDD2 ", 303, 23, 140, 1000, List.of()),
+            new Player(2L, "John", 23, 30, 334, 800,List.of()),
+            new Player(3L, "Joshn", 23, 30, 334, 700,List.of()),
+            new Player(3L, "Jos2hn", 233, 320, 34, 1000,List.of()));
 
     public List<Player> findAll() {
         return playerRepository.findAll();
@@ -41,7 +44,6 @@ public class PlayerService {
 
     public void deleteAll() {
         playerRepository.deleteAll();
-        ;
     }
 
     public void deleteById(Long id) {

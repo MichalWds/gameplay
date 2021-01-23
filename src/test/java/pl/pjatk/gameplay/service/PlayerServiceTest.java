@@ -71,7 +71,7 @@ public class PlayerServiceTest {
     public void testSave(){
 
         Player player1 = new Player("test",200,300,400,500);
-        Player player2 = new Player(3L,"test",200,300,400,500);
+        Player player2 = new Player(3L,"test",200,300,400,500, List.of());
 
         when(playerRepository.save(player1)).thenReturn(player2);
 
@@ -92,7 +92,7 @@ public class PlayerServiceTest {
     public void testUpdate(){
 
         Player player1 = new Player("test",200,300,400,500);
-        Player player2 = new Player(3L,"test",200,300,400,500);
+        Player player2 = new Player(3L,"test",200,300,400,500, List.of());
 
         when(playerRepository.save(player1)).thenReturn(player2);
 
