@@ -14,7 +14,7 @@ public class DamageService {
     public DamageService(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
-
+//remove if want to use PutMapping with two id's. After that DamageService will stop working without injection
     public DamageService() {
 
     }

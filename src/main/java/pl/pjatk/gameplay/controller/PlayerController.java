@@ -62,4 +62,16 @@ public class PlayerController {
     public ResponseEntity<Optional<Player>> update(@PathVariable long idA, @PathVariable long idD) {
         return ResponseEntity.ok(damageService.update(idA, idD));
     }
+
+//    @GetMapping("health/{health}")
+//    public ResponseEntity<Optional<Player>> findById(@PathVariable long id) {
+//        Optional<Player> byId = playerService.findById(id);
+//        if (byId.isPresent()) {
+//            return ResponseEntity.ok(byId);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
+
+
 }
